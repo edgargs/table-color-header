@@ -32,16 +32,16 @@ public class UtilityTable {
     public static void initSelectList(JTable pTable, 
                                       FarmaTableModel pTableModel,
                                       FarmaColumnData[] pColumnsList,
-                                      ColumnGroup g_other) {
+                                      ColumnGroup columnGroup) {
         initSelectList(pTable, pTableModel, pColumnsList, new ArrayList(), 
                        null, null, false);
-        if (g_other != null) {
+        if (columnGroup != null) {
             TableColumnModel cm = pTable.getColumnModel();
             GroupableTableHeader header = new GroupableTableHeader(cm);
-            for (int column : g_other.getIndexColumns()) {
-                g_other.add(cm.getColumn(column));
+            for (int column : columnGroup.getIndexColumns()) {
+                columnGroup.add(cm.getColumn(column));
             }
-            header.addColumnGroup(g_other);
+            header.addColumnGroup(columnGroup);
             pTable.setTableHeader(header);
         }
     }

@@ -25,7 +25,7 @@ public class Dialog1 extends JDialog {
     private GridLayout gridLayout1 = new GridLayout();
 
     private boolean DEBUG = false;
-    private JTable jTable2 = new JTable();
+    private JTable jTable = new JTable();
     private JScrollPane jScrollPane1 = new JScrollPane();
 
     public Dialog1() {
@@ -48,7 +48,7 @@ public class Dialog1 extends JDialog {
         jPanel1.setBounds(new Rectangle(20, 130, 350, 125));
         jPanel1.setLayout(gridLayout1);
 
-        jScrollPane1.getViewport().add(jTable2, null);
+        jScrollPane1.getViewport().add(jTable, null);
         this.getContentPane().add(jScrollPane1, null);
         this.getContentPane().add(jPanel1, null);
 
@@ -56,19 +56,19 @@ public class Dialog1 extends JDialog {
     }
     
     private void initTableListaComplementarios() {
-        FarmaTableModel tableModelListaComplementarios;
-        tableModelListaComplementarios = new FarmaTableModel(ConstantsVentas.columnsListaProductosComplementario, ConstantsVentas.defaultValuesListaProductosComplementario, 0);
+        FarmaTableModel tableModel;
+        tableModel = new FarmaTableModel(ConstantsVentas.columnsList, ConstantsVentas.defaultValues, 0);
+
+        ColumnGroup columnGroup = null;
+
+        int[] columns = {8,9};
+        columnGroup = new ColumnGroup("Precio Venta " + "S/.", columns);
         
-        int[] columns = {26,27,28,30};
-        ColumnGroup g_other = new ColumnGroup("Precio Venta " + "S/.", columns);
+        UtilityTable.initSelectList(jTable, tableModel, ConstantsVentas.columnsList, null);
         
-        UtilityTable.initSelectList(jTable2, tableModelListaComplementarios, ConstantsVentas.columnsListaProductosComplementario, g_other);
-        
-        ArrayList row = new ArrayList(Arrays.asList("1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
-                                                               "1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
-                                                               "1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
-                                                    "1"));
-        tableModelListaComplementarios.insertRow(row);
+        var row = new ArrayList(Arrays.asList("00", "552277", "Producto ABC", "Caja", "04", "66", "06", "No",
+                                                    "7.0", "11"));
+        tableModel.insertRow(row);
     }
     
 
