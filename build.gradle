@@ -1,5 +1,5 @@
 plugins {
-    id 'java'
+    id 'application'
 }
 
 group 'com.gs.swing.table'
@@ -19,3 +19,9 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+
+application {
+    mainClass = 'com.gs.swing.table.Dialog1'
+}
+
